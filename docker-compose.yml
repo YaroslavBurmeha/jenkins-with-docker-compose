@@ -1,0 +1,9 @@
+version: 3
+
+service:
+  web-page:
+    build: nginx/
+    ports: 80:80
+  php:
+    build: php/
+    
