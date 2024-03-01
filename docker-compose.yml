@@ -1,7 +1,8 @@
 service:
   web-page:
-    build: nginx/
-    ports: 80:80
-#  php:
-#    build: php/
+    build: ./dockerfiles/nginx/
+    ports: 
+      - "80:80"
+  php:
+    build: ./dockerfiles/php/
 
