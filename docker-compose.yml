@@ -2,8 +2,12 @@ version: '3.8'
 
 services:
   nginx:
-    build: dockerfiles/nginx/
+    build: 
+      context: dockerfile/
+      dockerfile: nginx/
     ports:
       - "80:80"
   php:
-    build: dockerfiles/php/
+    build:
+      context: dockerfile/
+      dockerfile: php/
