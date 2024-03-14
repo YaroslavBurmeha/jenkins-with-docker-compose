@@ -8,6 +8,4 @@ services:
     ports:
       - "80:80"
   php:
-    build:
-      context: dockerfile/
-      dockerfile: php/
+    image: php-fpm:8.2
