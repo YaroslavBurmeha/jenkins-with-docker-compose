@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nginx:
-    build: dockerfile/nginx
+    build: dockerfiles/nginx
     ports:
       - "80:80"
   php:
