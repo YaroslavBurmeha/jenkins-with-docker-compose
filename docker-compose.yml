@@ -1,19 +1,9 @@
 version: '3.8'
 
 services:
-  nginx:
+  nginx-main:
     build: dockerfiles/nginx
     ports:
-      - "0.0.0.0:8088:80"
-    volumes:
-      - app-data:/usr/share/nginx/html
-    networks:
-      - test
-  php:  
-    image: php:8.2-fpm
-    networks:
-      - test
-networks:
-  test:
-volumes:
-  app-data:
+      - "80:80"
+  php-service:  
+    build: dockerfiles/php
