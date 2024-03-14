@@ -6,4 +6,4 @@ services:
     ports:
       - "80:80"
   php:
-    image: php-fpm:8.2
+    image: php:8.2-fpm
