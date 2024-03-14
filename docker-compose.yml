@@ -4,6 +4,16 @@ services:
   nginx:
     build: dockerfiles/nginx
     ports:
-      - "80:80"
-  php:
+      - "0.0.0.0:8088:80"
+    volumes:
+      - app-data:/usr/share/nginx/html
+    networks:
+      - test
+  php:  
     image: php:8.2-fpm
+    networks:
+      - test
+networks:
+  test:
+volumes:
+  app-data:
