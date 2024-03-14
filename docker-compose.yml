@@ -5,5 +5,9 @@ services:
     build: dockerfiles/nginx
     ports:
       - "80:80"
+    volumes:
+      - ./dockerfiles/app/:/usr/share/nginx/html/
   php-service:  
     build: dockerfiles/php
+    volumes:
+      - ./dockerfiles/app/:/usr/share/nginx/html/
