@@ -18,5 +18,17 @@ services:
       context: dockerfiles/app_files_service
     volumes:
       - app_files:/var/www/html
+  db_service:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: P@ssword
+  db_control:
+    image: phpmyadmin
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - "8080:80"
 volumes:
   app_files:
