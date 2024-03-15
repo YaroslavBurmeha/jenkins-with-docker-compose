@@ -2,12 +2,22 @@ version: '3.8'
 
 services:
   nginx-main:
-    build: dockerfiles/nginx
+    build:
+      context: dockerfiles/nginx
     ports:
       - "80:80"
     volumes:
-      - ./dockerfiles/app/:/var/www/html/
+      - app_files:/var/www/html/
   php-service:  
-    build: dockerfiles/php
+    build:
+      context: dockerfiles/php
     volumes:
-      - ./dockerfiles/app/:/var/www/html/
+      - app_files:/var/www/html/
+  app_files_service:
+    build:
+      context: dockerfiles/app_files_service
+      dockerfile: Dockerfile.app_files_service
+    volumes:
+      - app_files:/var/www/html
+volumes:
+  app_files:

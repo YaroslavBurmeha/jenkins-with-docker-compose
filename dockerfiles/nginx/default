@@ -41,7 +41,7 @@ server {
 	root /var/www/html;
 
 	# Add index.php to the list if you are using PHP
-	index index.html index.php;
+		index.html index.php;
 
 	server_name _;
 
@@ -54,13 +54,11 @@ server {
 	# pass PHP scripts to FastCGI server
 	#
 	location ~ \.php$ {
-		#include snippets/fastcgi-php.conf;
-	
-		# With php-fpm (or other unix sockets):
-	#	fastcgi_pass unix:/run/php/php8.2-fpm.sock;
-		# With php-cgi (or other tcp sockets):
-		fastcgi_pass php-service:9000;
-		fastcgi_index  index.php;
+		include fastcgi_params;
+        fastcgi_pass php-service:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
 	}
 
 	# deny access to .htaccess files, if Apache's document root
