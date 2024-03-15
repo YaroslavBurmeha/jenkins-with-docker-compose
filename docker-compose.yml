@@ -16,7 +16,6 @@ services:
   app_files_service:
     build:
       context: dockerfiles/app_files_service
-      dockerfile: Dockerfile.app_files_service
     volumes:
       - app_files:/var/www/html
 volumes:
