@@ -2,27 +2,28 @@ version: '3.8'
 
 services:
   nginx-main:
-    build:
-      context: dockerfiles/nginx
+    image: ${nginx-service-name}
     ports:
       - "80:80"
     volumes:
       - app_files:/var/www/html/
+    depends_on:
+      - app_files_service
   php-service:  
-    build:
-      context: dockerfiles/php
+    image: ${php-service-name}
     volumes:
       - app_files:/var/www/html/
+    depends_on:
+      - app_files_service
   app_files_service:
-    build:
-      context: dockerfiles/app_files_service
+    image: ${app-files-name}
     volumes:
       - app_files:/var/www/html
   db_service:
     image: mariadb
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: P@ssword
+      MARIADB_ROOT_PASSWORD: ${DB-PASSWORD}
   db_control:
     image: phpmyadmin
     restart: always
