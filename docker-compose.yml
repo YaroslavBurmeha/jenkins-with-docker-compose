@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nginx-main:
-    image: ${VERSION_NUMBER}
+    image: ${VERSION_NUMBER_NGINX}
     ports:
       - "80:80"
     volumes:
@@ -10,13 +10,13 @@ services:
     depends_on:
       - app_files_service
   php-service:  
-    image: ${VERSION_NUMBER}
+    image: ${VERSION_NUMBER_PHP}
     volumes:
       - app_files:/var/www/html/
     depends_on:
       - app_files_service
   app_files_service:
-    image: ${VERSION_NUMBER}
+    image: ${VERSION_NUMBER_APP}
     volumes:
       - app_files:/var/www/html
   db_service:
