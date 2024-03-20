@@ -1,4 +1,4 @@
 <?php
-echo "BUILD 108"; 
+echo "Окончательный тест!"; 
 phpinfo();
  ?>
