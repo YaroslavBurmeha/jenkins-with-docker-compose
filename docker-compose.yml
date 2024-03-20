@@ -29,5 +29,3 @@ services:
       - PMA_ARBITRARY=1
     ports:
       - "8081:80"
-volumes:
-  ${VOLUME_VERSION}:
