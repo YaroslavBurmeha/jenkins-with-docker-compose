@@ -7,18 +7,12 @@ services:
       - "80:80"
     volumes:
       - app_files:/var/www/html/
-    depends_on:
-      - app_files_service
   php-service:  
     image: ${VERSION_NUMBER_PHP}
     volumes:
       - app_files:/var/www/html/
     depends_on:
-      - app_files_service
-  app_files_service:
-    image: ${VERSION_NUMBER_APP}
-    volumes:
-      - app_files:/var/www/html
+      - nginx-main
   db_service:
     image: mariadb
     restart: always
