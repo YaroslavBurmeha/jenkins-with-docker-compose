@@ -7,14 +7,14 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ${VOLUME_VERSION}:/var/www/html/
+      - app_files:/var/www/html/
     depends_on:
       - php-service
   php-service:  
     image: ${VERSION_NUMBER_PHP}
     container_name: php-service
     volumes:
-      - ${VOLUME_VERSION}:/var/www/html/
+      - app_files:/var/www/html/
   db_service:
     image: mariadb
     container_name: mariadb
@@ -29,3 +29,5 @@ services:
       - PMA_ARBITRARY=1
     ports:
       - "8081:80"
+volumes:
+  app_files:
