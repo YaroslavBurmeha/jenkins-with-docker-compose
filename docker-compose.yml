@@ -8,13 +8,13 @@ services:
       - "80:80"
     volumes:
       - app_files:/var/www/html/
+    depends_on:
+      - php-service
   php-service:  
     image: ${VERSION_NUMBER_PHP}
     container_name: php-service
     volumes:
       - app_files:/var/www/html/
-    depends_on:
-      - nginx-main
   db_service:
     image: mariadb
     container_name: mariadb
