@@ -3,23 +3,27 @@ version: '3.8'
 services:
   nginx-main:
     image: ${VERSION_NUMBER_NGINX}
+    container_name: nginx-main
     ports:
       - "80:80"
     volumes:
       - app_files:/var/www/html/
   php-service:  
     image: ${VERSION_NUMBER_PHP}
+    container_name: php-service
     volumes:
       - app_files:/var/www/html/
     depends_on:
       - nginx-main
   db_service:
     image: mariadb
+    container_name: mariadb
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: ${DB-PASSWORD}
   db_control:
     image: phpmyadmin
+    container_name: phpmyadmin
     restart: always
     environment:
       - PMA_ARBITRARY=1
