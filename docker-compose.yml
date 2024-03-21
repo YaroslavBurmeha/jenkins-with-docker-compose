@@ -5,7 +5,7 @@ services:
     image: ${VERSION_NUMBER_NGINX}
     container_name: nginx-main
     ports:
-      - "80:80"
+      - "80:8082"
     volumes:
       - app_files:/var/www/html/
     depends_on:
